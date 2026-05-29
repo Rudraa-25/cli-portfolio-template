@@ -8,15 +8,21 @@ const data = require('./data.js');
 const assets = require('./assets.js');
 
 const { exec } = require('child_process');
+const os = require('os');
+
 let openUrl = (url) => {
+  const fallback = () => {
+    const platform = os.platform();
+    let cmd = `xdg-open "${url}"`;
+    if (platform === 'win32') cmd = `start "" "${url}"`;
+    if (platform === 'darwin') cmd = `open "${url}"`;
+    exec(cmd, () => {});
+  };
+
   import('open').then((openModule) => {
     const openFn = openModule.default || openModule;
-    openFn(url).catch(() => {});
-  }).catch(() => {
-    exec(`xdg-open "${url}"`, (err) => {
-      if (err) console.error('Failed to open URL', err);
-    });
-  });
+    openFn(url).catch(() => fallback());
+  }).catch(() => fallback());
 };
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const startTime = Date.now();
