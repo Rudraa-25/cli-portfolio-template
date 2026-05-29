@@ -1,5 +1,7 @@
 # CLI Portfolio
 
+![CLI Portfolio Demo](./img/demo.png)
+
 A beautifully crafted, terminal-based portfolio to showcase your skills, projects, and journey directly in the command line. Meet people where they code!
 
 ## Features
