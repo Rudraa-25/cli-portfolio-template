@@ -1,0 +1,26 @@
+{
+  "name": "your-cli-portfolio",
+  "version": "1.0.0",
+  "description": "A terminal-based portfolio",
+  "main": "src/index.js",
+  "bin": {
+    "my-cli": "bin/portfolio.js"
+  },
+  "scripts": {
+    "start": "node bin/portfolio.js",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "cli",
+    "portfolio",
+    "terminal",
+    "resume"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "clipboardy": "^5.3.1",
+    "open": "^11.0.0",
+    "picocolors": "^1.1.1"
+  }
+}

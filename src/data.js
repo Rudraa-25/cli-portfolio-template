@@ -1,0 +1,109 @@
+const fs = require('fs');
+const path = require('path');
+
+const fallbackData = {
+  name: "John",
+  surname: "Doe",
+  title: "Software Engineer | Open Source Contributor",
+  location: "Earth",
+  funFact: "I love turning coffee into code!",
+  about: [
+    "Hey there, I'm John :)",
+    "I'm a passionate developer with a knack for building intuitive applications.",
+    "Currently focusing on full-stack development and open source projects.",
+    "",
+    "I am driven by a commitment to clean code and continuous learning."
+  ],
+  status: [
+    "Building cool things",
+    "Looking for new opportunities",
+    "Drinking coffee"
+  ],
+  now: {
+    building: [
+      "My new portfolio",
+      "An awesome open source tool"
+    ],
+    learning: [
+      "New frameworks",
+      "System design"
+    ],
+    exploring: [
+      "Cloud architecture",
+      "AI tools"
+    ]
+  },
+  timeline: [
+    { year: "2020", event: "Started my coding journey" },
+    { year: "2022", event: "Landed my first developer job" },
+    { year: "2024", event: "Launched my CLI portfolio" },
+  ],
+  achievements: [
+    "Graduated with a degree in Computer Science",
+    "Contributed to major open-source projects",
+    "Won a hackathon"
+  ],
+  lab: [
+    "Project Alpha",
+    "Project Beta"
+  ],
+  skills: [
+    { name: "JavaScript / Node.js", level: 90 },
+    { name: "Python", level: 85 },
+    { name: "React", level: 80 },
+    { name: "Docker / CI-CD", level: 75 }
+  ],
+  projects: [
+    {
+      name: "Awesome Project",
+      description: "A very cool project that does things",
+      status: "Complete",
+      tech: ["Node.js", "Express", "MongoDB"]
+    },
+    {
+      name: "Another Tool",
+      description: "A tool to help developers",
+      status: "In Progress",
+      tech: ["React", "Tailwind"]
+    }
+  ],
+  socials: {
+    github: "@johndoe",
+    linkedin: "John Doe",
+    twitter: "@johndoe",
+    email: "john@example.com"
+  },
+  seo: {
+    github: "https://github.com/johndoe",
+    website: "https://johndoe.com",
+    linkedin: "https://www.linkedin.com/in/johndoe/",
+    twitter: "https://twitter.com/johndoe",
+    email: "mailto:john@example.com"
+  },
+  website: "https://johndoe.com",
+  cv: {
+    url: "https://example.com/cv.pdf"
+  },
+  cli: {
+    version: "1.0.0",
+    package: "your-cli-portfolio"
+  },
+  theme: {
+    default: "Cyber Nebula"
+  }
+};
+
+function loadConfig() {
+  try {
+    const configPath = path.join(__dirname, '..', 'config.json');
+    if (fs.existsSync(configPath)) {
+      const raw = fs.readFileSync(configPath, 'utf8');
+      return JSON.parse(raw);
+    }
+  } catch (e) {
+    // silently fallback
+  }
+  return fallbackData;
+}
+
+module.exports = loadConfig();
